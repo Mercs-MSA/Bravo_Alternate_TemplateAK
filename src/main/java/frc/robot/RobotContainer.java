@@ -22,8 +22,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.Constants.VisionConstants;
 import frc.robot.commands.DriveCommands;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.Vision.Vision;
+import frc.robot.subsystems.Vision.VisionIO;
+import frc.robot.subsystems.Vision.VisionIOLimelight;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
@@ -41,6 +45,8 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 public class RobotContainer {
   // Subsystems
   public final Drive drive;
+  public final VisionIO visionPoseIO;
+  public final Vision visionPose;
 
   // Controller
   private final CommandXboxController controller = new CommandXboxController(0);
@@ -84,6 +90,9 @@ public class RobotContainer {
                 new ModuleIO() {});
         break;
     }
+
+    visionPoseIO = new VisionIOLimelight(VisionConstants.limelightPoseEstimatorName, drive::getRotation);
+    visionPose = new Vision(drive, visionPoseIO);
 
     // Set up auto routines
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
