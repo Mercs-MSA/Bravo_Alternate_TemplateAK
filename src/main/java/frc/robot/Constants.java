@@ -39,12 +39,5 @@ public final class Constants {
     REPLAY
   }
 
-  public static final class VisionConstants {
-    public static final String objectDetectionLimelightName = "limelight-od";
-    public static final String limelightPoseEstimatorName = "limelight-pe";
 
-    public static final Vector<N3> visionStdDevs = VecBuilder.fill(.5, .5, 9999999);
-    public static PoseEstimate bestLimelightPose;
-    public static boolean doTargetTracking = false;
-  }
 }

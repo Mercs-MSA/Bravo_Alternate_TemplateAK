@@ -23,6 +23,10 @@ public class VisionConstants {
   public static AprilTagFieldLayout aprilTagLayout =
       AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField);
 
+    // Camera names, must match names configured on coprocessor
+    public static String camera0Name = "limelight-od";
+    public static String camera1Name = "limelight-pe";
+
   // Robot to camera transforms
   // (Not used by Limelight, configure in web UI instead)
   public static Transform3d robotToCamera0 =
