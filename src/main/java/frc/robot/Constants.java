@@ -14,6 +14,17 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.Vector;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.numbers.N3;
+import frc.robot.LimelightHelpers.LimelightResults;
+import frc.robot.LimelightHelpers.PoseEstimate;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * This class defines the runtime mode used by AdvantageKit. The mode is always "real" when running
@@ -34,4 +45,13 @@ public final class Constants {
     /** Replaying from a log file. */
     REPLAY
   }
+
+  public static final class VisionConstants {
+    public static final String onjectDetectionLimelightName = "limelight-objectDetection";
+    public static final String limelightPoseEstimatorName = "limelight-posEstimator";
+
+    public static final Vector<N3> visionStdDevs = VecBuilder.fill(.5,.5,9999999);
+    public static PoseEstimate bestLimelightPose;
+    public static boolean doTargetTracking = false;
+}
 }
