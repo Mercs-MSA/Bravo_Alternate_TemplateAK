@@ -215,7 +215,7 @@ public class Drive extends SubsystemBase implements VisionConsumer {
     }
 
     // Update gyro alert
-    gyroDisconnectedAlert.set(!gyroInputs.connected && Constants.currentMode != Mode.SIM);
+    gyroDisconnectedAlert.set(!gyroInputs.connected && Constants.kCurrentMode != Mode.SIM);
   }
 
   /**
