@@ -1,43 +1,33 @@
-// Copyright 2021-2025 FRC 6328
-// http://github.com/Mechanical-Advantage
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// version 3 as published by the Free Software Foundation or
-// available in the root directory of this project.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-
 package frc.robot;
 
-import edu.wpi.first.math.VecBuilder;
-import edu.wpi.first.math.Vector;
-import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.wpilibj.RobotBase;
-import frc.robot.LimelightHelpers.PoseEstimate;
 
-/**
- * This class defines the runtime mode used by AdvantageKit. The mode is always "real" when running
- * on a roboRIO. Change the value of "simMode" to switch between "sim" (physics sim) and "replay"
- * (log replay from a file).
- */
 public final class Constants {
-  public static final Mode simMode = Mode.SIM;
-  public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : simMode;
 
-  public static enum Mode {
-    /** Running on a real robot. */
-    REAL,
+    // AdvantageKit modes
+    public static enum Mode {
+        REAL,
+        SIM,
+        REPLAY
+    }
 
-    /** Running a physics simulator. */
-    SIM,
+    public static final Mode kCurrentMode = 
+    // Mode.REPLAY;
+    RobotBase.isReal() ? Mode.REAL : Mode.SIM;
+    // Set Tuning to true during development, false during competition
+    public static final boolean kTuningMode = true;
 
-    /** Replaying from a log file. */
-    REPLAY
-  }
+    // ROBOT SEPCIFIC
+    public static final String kCanbusName = "drivebase";
 
+    public static final AprilTagFieldLayout kFieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025ReefscapeWelded);
 
+    public static final double kFieldLengthMeters = kFieldLayout.getFieldLength();
+    public static final double kFieldWidthMeters = kFieldLayout.getFieldWidth();
+
+    public static final int kAprilTagCount = 22;
+
+    public static final double kLoopPeriod = 0.02;
 }
