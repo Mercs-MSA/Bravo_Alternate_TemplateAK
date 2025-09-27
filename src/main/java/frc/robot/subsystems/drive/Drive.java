@@ -343,6 +343,7 @@ public class Drive extends SubsystemBase implements VisionConsumer {
       Pose2d visionRobotPoseMeters,
       double timestampSeconds,
       Matrix<N3, N1> visionMeasurementStdDevs) {
+        System.out.println("Vision measurement added: " + visionRobotPoseMeters);
     poseEstimator.addVisionMeasurement(
         visionRobotPoseMeters, timestampSeconds, visionMeasurementStdDevs);
   }

@@ -24,8 +24,8 @@ public class VisionConstants {
       AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField);
 
   // Camera names, must match names configured on coprocessor
-  public static String camera0Name = "limelight-od";
-  public static String camera1Name = "limelight-pe";
+  public static String camera0Name = "limelight";
+//   public static String camera1Name = "limelight";
 
   // Robot to camera transforms
   // (Not used by Limelight, configure in web UI instead)
@@ -35,8 +35,8 @@ public class VisionConstants {
       new Transform3d(-0.2, 0.0, 0.2, new Rotation3d(0.0, -0.4, Math.PI));
 
   // Basic filtering thresholds
-  public static double maxAmbiguity = 0.3;
-  public static double maxZError = 0.75;
+  public static double maxAmbiguity = 20; // FIXME: changed
+  public static double maxZError = 999; //changed
 
   // Standard deviation baselines, for 1 meter distance and 1 tag
   // (Adjusted automatically based on distance and # of tags)
